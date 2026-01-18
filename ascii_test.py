@@ -7,10 +7,13 @@ import numpy as np
 chars=[' ','.',',','-',':','/','=','+','%','&','$','X','@','H','M','#']
 
 #define dimensions
-width=40
+width=170
 height=int(0.4*width)
 
-img=iio.imread("star.png")
+#invert
+invert=False
+
+img=iio.imread("cat_wizard.jpg")
 
 #limit dimensions by image size
 height=min(len(img), height)
@@ -19,13 +22,18 @@ width = min(len(img[0]), width)
 
 
 def cToVal(c):
+    val=0
     if isinstance(c, np.uint8):
-        return 1-c/255
+        val= c/255
+    else:
+        a=255
+        if len(c)>3:
+            a=c[3]
+        val= (c[0]/255+c[1]/255+c[2]/255)/3*(a/255)
+    if not invert:
+        val=1-val
 
-    a=255
-    if len(c)>3:
-        a=c[3]
-    return -(c[0]/255+c[1]/255+c[2]/255)/3*(a/255)
+    return val
 
 
 for i in range(0,height):
@@ -47,4 +55,4 @@ for i in range(0,height):
         print(char, end="")
     print()
 
-
+print(img[0][0])
