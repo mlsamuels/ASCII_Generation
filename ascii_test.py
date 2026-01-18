@@ -6,11 +6,13 @@ import numpy as np
 
 chars=[' ','.',',','-',':','/','=','+','%','&','$','X','@','H','M','#']
 
+#define dimensions
 width=40
 height=int(0.4*width)
 
 img=iio.imread("star.png")
 
+#limit dimensions by image size
 height=min(len(img), height)
 width = min(len(img[0]), width)
 
