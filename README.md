@@ -1,0 +1,1 @@
+This is a simple python script for generating ascii art from images. Enter the desired width and height of the art and change the image to the target image. If the result looks wrong, you may have to change the state of the invert boolean.
